@@ -3,7 +3,9 @@ import React from 'react'
 import UsersList from '../components/UsersList'
 
 export default function Users() {
-  const USERS = [{id: 'u1', name: 'Peter Falk', places: 3, image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPeter_Falk&psig=AOvVaw0on8UZpQvRHe-bCNebGSVg&ust=1590438638871000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCb_emrzekCFQAAAAAdAAAAABAD'}];
+  const USERS = [
+    {id: 'u1', name: 'Peter Falk', places: 3, image: 'https://i.pinimg.com/564x/73/ec/b4/73ecb4f4cfeea0bb2e8760b942a07c88.jpg'}
+  ];
 
   return (
     <UsersList items={USERS}/>
