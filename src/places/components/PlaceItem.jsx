@@ -3,6 +3,7 @@ import React from "react";
 import "./PlaceItem.css";
 
 import Card from "../../shared/components/UIElements/Card";
+import CustomButton from "../../shared/components/FormElements/CustomButton";
 
 export default function PlaceItem(props) {
   return (
@@ -17,9 +18,9 @@ export default function PlaceItem(props) {
           <p>{props.description}</p>
         </div>
         <div className="place-item__actions">
-          <button>VIEW ON MAP</button>
-          <button>EDIT</button>
-          <button>DELETE</button>
+          <CustomButton inverse>VIEW ON MAP</CustomButton>
+          <CustomButton to={`/places/${props.id}`}>EDIT</CustomButton>
+          <CustomButton danger>DELETE</CustomButton>
         </div>
       </Card>
     </li>
