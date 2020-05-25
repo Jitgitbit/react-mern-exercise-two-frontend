@@ -23,11 +23,11 @@ export default function MainNavigation(props) {
   return (
     <React.Fragment>
       {drawerIsOpen && <Backdrop onClick={closeDrawer}/>}
-      {drawerIsOpen && <SideDrawer>
+      <SideDrawer show={drawerIsOpen}>
         <nav className="main-navigation__drawer-nav">
           <NavLinks />
         </nav>
-      </SideDrawer>}
+      </SideDrawer>
       <MainHeader>
         <button className="main-navigation__menu-btn" onClick={openDrawer}>
           <span />
