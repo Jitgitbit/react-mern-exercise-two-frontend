@@ -6,6 +6,7 @@ import "./MainNavigation.css";
 import NavLinks from "./NavLinks";
 import MainHeader from "./MainHeader";
 import SideDrawer from "./SideDrawer";
+import Backdrop from '../UIElements/Backdrop'
 
 
 export default function MainNavigation(props) {
@@ -21,6 +22,7 @@ export default function MainNavigation(props) {
 
   return (
     <React.Fragment>
+      {drawerIsOpen && <Backdrop onClick={closeDrawer}/>}
       {drawerIsOpen && <SideDrawer>
         <nav className="main-navigation__drawer-nav">
           <NavLinks />
