@@ -11,7 +11,7 @@ export default function UsersList(props) {
     return (
       <div className="center">
         <Card>
-          <h2>No Users found!</h2>
+          <h2>| No Users found! |</h2>
         </Card>
       </div>
     );
