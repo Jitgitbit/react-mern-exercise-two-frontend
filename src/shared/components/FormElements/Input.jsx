@@ -31,9 +31,15 @@ export default function Input(props) {
     isTouched: false,
   });
 
-  useEffect(()=>{
-    props.onInput(props.id, inputState.value, inputState.isValid)
-  },[props, inputState])                                           //------> DANGER ! INFINITE LOOPS !
+  const {id, onInput} = props;
+  const {value, isValid} = inputState;
+
+  // useEffect(()=>{
+  //   props.onInput(props.id, inputState.value, inputState.isValid)
+  // },[props, inputState])                                           //------> DANGER ! INFINITE LOOPS !
+  useEffect(() => {
+    onInput(id, value, isValid)
+  }, [id, value, isValid, onInput]);
 
   const changeHandler = (event) => {
     dispatch({
