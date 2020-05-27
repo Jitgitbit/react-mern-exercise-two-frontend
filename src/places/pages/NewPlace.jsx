@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React from 'react';
 
 import './PlaceForm.css';
 
@@ -8,61 +8,28 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
+import { useFormHook } from '../../shared/hooks/form-hook';
 
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case 'INPUT_CHANGE':
-      let formIsValid = true;
-      for (const inputId in state.inputs) {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
-        }
-      }
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid }
-        },
-        isValid: formIsValid
-      };
-    default:
-      return state;
-  }
-};
 
 const NewPlace = () => {
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
+
+  const [formState, inputHandler] = useFormHook(
+    {
       title: {
         value: '',
         isValid: false
       },
-      description: {                               // ---> is basically the initial state !
+      description: {                               
         value: '',
         isValid: false
       },
-      address: {                               // ---> is basically the initial state !
+      address: {                               
         value: '',
         isValid: false
       }
-    },
-    isValid: false
-  });
-
-  // const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
-  const inputHandler = useCallback((id, value, isValid) => {         //--> no more infinite loop !
-    dispatch({
-      type: 'INPUT_CHANGE',
-      value: value,
-      isValid: isValid,
-      inputId: id
-    });
-  }, [dispatch]);                                 //--> here dispatch can actually be ommitted thx to react, I leave it for clarity.
-
+    }, false
+  );
+  
   const placeSubmitHandler = event => {
     event.preventDefault();
     console.log(`----->> formState.inputs says what?`,formState.inputs); // send this to the backend!
