@@ -1,11 +1,28 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useReducer } from "react";
 
 import "./NewPlace.css";
 
 import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/util/validators";
 
+
+const formReducer = (state, action) => {}
+
+
 export default function NewPlace() {
+  useReducer(formReducer, {
+    inputs: {
+      title: {
+        value: '',
+        isValid: false
+      },
+      description: {
+        value: '',
+        isValid: false
+      }
+    },
+    isValid: false
+  });
 
   // const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
   const titleInputHandler = useCallback((id, value, isValid) => {}, []);                             //--> no more infinite loop !
