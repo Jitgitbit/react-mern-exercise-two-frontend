@@ -47,10 +47,10 @@ export default function NewPlace() {
   });
 
   // const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
-  const titleInputHandler = useCallback((id, value, isValid) => {          //--> no more infinite loop !
+  const inputHandler = useCallback((id, value, isValid) => {          //--> no more infinite loop !
     dispatch({type: 'INPUT_CHANGE', value: value, isValid: isValid, inputId: id})
   }, []);                             
-  const descriptionInputHandler = useCallback((id, value, isValid) => {}, []);                             
+  // const descriptionInputHandler = useCallback((id, value, isValid) => {}, []);                             
 
   return (
     <form className="place-form">
@@ -61,7 +61,7 @@ export default function NewPlace() {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid title."
-        onInput={titleInputHandler}
+        onInput={inputHandler}
       />
       <Input
         element="textarea"
@@ -69,7 +69,7 @@ export default function NewPlace() {
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}                                     //----> no more need for VALIDATOR_REQUIRE !
         errorText="Please enter a valid description (at least 5 characters)."
-        onInput={descriptionInputHandler}
+        onInput={inputHandler}
       />
     </form>
   );
