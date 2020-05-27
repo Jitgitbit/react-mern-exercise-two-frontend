@@ -39,9 +39,8 @@ const DUMMY_PLACES = [
 ];
 
 export default function UpdatePlace() {
-  const placeId = useParams().placeId;
 
-  const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);
+  const placeId = useParams().placeId;
 
   const [formState, inputHandler] = useFormHook({
     title: {
@@ -53,6 +52,8 @@ export default function UpdatePlace() {
       isValid: true
     },
   }, true);
+
+  const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);     //--> placed under hook to simulate server delay !!!
 
   const placeUpdateSubmitHandler = event => {
     event.preventDefault();
