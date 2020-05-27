@@ -82,7 +82,7 @@ export default function UpdatePlace() {
   }
 
   return (
-    formState.inputs.title.value &&                                              //----> beatiful JSX && use !
+    formState.inputs.title.value && (                                             //----> beatiful JSX && use !
       <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
         <Input
           id="title"
@@ -107,5 +107,6 @@ export default function UpdatePlace() {
         />
         <CustomButton type="submit" disabled={!formState.isValid}>UPDATE PLACE</CustomButton>
       </form> 
+    )
   );
 }
