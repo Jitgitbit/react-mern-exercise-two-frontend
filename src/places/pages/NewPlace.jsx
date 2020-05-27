@@ -4,6 +4,7 @@ import "./NewPlace.css";
 
 import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/util/validators";
+import CustomButton from '../../shared/components/FormElements/CustomButton'
 
 
 const formReducer = (state, action) => {
@@ -49,8 +50,7 @@ export default function NewPlace() {
   // const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
   const inputHandler = useCallback((id, value, isValid) => {          //--> no more infinite loop !
     dispatch({type: 'INPUT_CHANGE', value: value, isValid: isValid, inputId: id})
-  }, []);                             
-  // const descriptionInputHandler = useCallback((id, value, isValid) => {}, []);                             
+  }, [dispatch]);                                                                   //--> here dispatch can actually be ommitted thx to react, I leave it for clarity.
 
   return (
     <form className="place-form">
@@ -71,6 +71,7 @@ export default function NewPlace() {
         errorText="Please enter a valid description (at least 5 characters)."
         onInput={inputHandler}
       />
+      <CustomButton type="submit" disabled={!formState.isValid}>ADD PLACE</CustomButton>
     </form>
   );
 }
