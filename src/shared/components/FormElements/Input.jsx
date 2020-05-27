@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 
 import "./Input.css";
 
@@ -30,6 +30,10 @@ export default function Input(props) {
     isValid: false,
     isTouched: false,
   });
+
+  useEffect(()=>{
+    props.onInput(props.id, inputState.value, inputState.isValid)
+  },[props, inputState])                                           //------> DANGER ! INFINITE LOOPS !
 
   const changeHandler = (event) => {
     dispatch({
