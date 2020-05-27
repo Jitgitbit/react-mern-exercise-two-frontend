@@ -54,6 +54,11 @@ export default function UpdatePlace() {
     },
   }, true);
 
+  const placeUpdateSubmitHandler = event => {
+    event.preventDefault();
+    console.log(`----> update formState.inputs says what?`,formState.inputs)
+  };
+
   if (!identifiedPlace) {
     return (
       <div className="center">
@@ -63,7 +68,7 @@ export default function UpdatePlace() {
   }
 
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
       <Input
         id="title"
         element="input"
