@@ -6,6 +6,9 @@ import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 
 export default function NewPlace() {
+
+  const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
+
   return (
     <form className="place-form">
       <Input
@@ -14,6 +17,7 @@ export default function NewPlace() {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid Title."
+        onInput={titleInputHandler}
       />
     </form>
   );
