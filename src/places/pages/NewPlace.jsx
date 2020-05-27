@@ -8,7 +8,7 @@ import Input from '../../shared/components/FormElements/Input'
 export default function NewPlace() {
   return (
     <form className="place-form">
-      <Input element="input" type="text" label="Title"/>
+      <Input element="input" type="text" label="Title" validators={[]} errorText="Please enter a valid Title."/>
     </form>
   )
 }
