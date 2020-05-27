@@ -26,7 +26,7 @@ export default function NewPlace() {
         element="textarea"
         id="description"
         label="Description"
-        validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
+        validators={[VALIDATOR_MINLENGTH(5)]}                                     //----> no more need for VALIDATOR_REQUIRE !
         errorText="Please enter a valid description (at least 5 characters)."
         onInput={descriptionInputHandler}
       />
