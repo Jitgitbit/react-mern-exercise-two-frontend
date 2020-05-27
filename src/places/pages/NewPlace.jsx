@@ -1,6 +1,6 @@
 import React, { useCallback, useReducer } from 'react';
 
-import './NewPlace.css';
+import './PlaceForm.css';
 
 import Input from '../../shared/components/FormElements/Input';
 import CustomButton from '../../shared/components/FormElements/CustomButton';
@@ -42,6 +42,10 @@ const NewPlace = () => {
         isValid: false
       },
       description: {                               // ---> is basically the initial state !
+        value: '',
+        isValid: false
+      },
+      address: {                               // ---> is basically the initial state !
         value: '',
         isValid: false
       }
