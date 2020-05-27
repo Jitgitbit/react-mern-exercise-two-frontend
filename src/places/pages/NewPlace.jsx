@@ -9,6 +9,7 @@ export default function NewPlace() {
 
   // const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
   const titleInputHandler = useCallback((id, value, isValid) => {}, []);                             //--> no more infinite loop !
+  const descriptionInputHandler = useCallback((id, value, isValid) => {}, []);                             //--> no more infinite loop !
 
   return (
     <form className="place-form">
@@ -27,7 +28,7 @@ export default function NewPlace() {
         label="Description"
         validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter a valid description (at least 5 characters)."
-        onInput={titleInputHandler}
+        onInput={descriptionInputHandler}
       />
     </form>
   );
