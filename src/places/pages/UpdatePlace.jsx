@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import './PlaceForm.css'
@@ -42,19 +42,41 @@ export default function UpdatePlace() {
 
   const placeId = useParams().placeId;
 
-  const [formState, inputHandler] = useFormHook({
+  const [formState, inputHandler, setFormData] = useFormHook({
     title: {
-      value: identifiedPlace.title,
-      isValid: true
+      // value: identifiedPlace.title,
+      value:'',
+      // isValid: true
+      isValid: false
     },
     description: {                               
-      value: identifiedPlace.description,
-      isValid: true
+      // value: identifiedPlace.description,
+      value:'',
+      // isValid: true
+      isValid: false
     },
-  }, true);
+  // }, true);
+  }, false);
 
   const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);     //--> placed under hook to simulate server delay !!!
 
+  useEffect(() => {
+    setFormData({
+      title: {
+        value: identifiedPlace.title,
+        // value:'',
+        isValid: true
+        // isValid: false
+      },
+      description: {                               
+        value: identifiedPlace.description,
+        // value:'',
+        isValid: true
+        // isValid: false
+      },
+    }, true);
+  }, [setFormData, identifiedPlace]);
+  
   const placeUpdateSubmitHandler = event => {
     event.preventDefault();
     console.log(`----> update formState.inputs says what?`,formState.inputs)
