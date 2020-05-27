@@ -13,8 +13,7 @@ import { useFormHook } from '../../shared/hooks/form-hook';
 
 const NewPlace = () => {
 
-  const [formState, inputHandler] = useFormHook(
-    {
+  const [formState, inputHandler] = useFormHook({
       title: {
         value: '',
         isValid: false
@@ -27,8 +26,7 @@ const NewPlace = () => {
         value: '',
         isValid: false
       }
-    }, false
-  );
+  }, false);
   
   const placeSubmitHandler = event => {
     event.preventDefault();
