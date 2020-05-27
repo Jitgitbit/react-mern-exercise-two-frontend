@@ -44,18 +44,13 @@ export default function UpdatePlace() {
 
   const [formState, inputHandler, setFormData] = useFormHook({
     title: {
-      // value: identifiedPlace.title,
       value:'',
-      // isValid: true
       isValid: false
     },
     description: {                               
-      // value: identifiedPlace.description,
       value:'',
-      // isValid: true
       isValid: false
     },
-  // }, true);
   }, false);
 
   const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);     //--> placed under hook to simulate server delay !!!
@@ -64,15 +59,11 @@ export default function UpdatePlace() {
     setFormData({
       title: {
         value: identifiedPlace.title,
-        // value:'',
         isValid: true
-        // isValid: false
       },
       description: {                               
         value: identifiedPlace.description,
-        // value:'',
         isValid: true
-        // isValid: false
       },
     }, true);
   }, [setFormData, identifiedPlace]);
@@ -91,29 +82,30 @@ export default function UpdatePlace() {
   }
 
   return (
-    <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
-      <Input
-        id="title"
-        element="input"
-        type="text"
-        label="Title"
-        validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a valid title."
-        onInput={inputHandler}
-        initialValue={formState.inputs.title.value}
-        initialIsValid={formState.inputs.title.isValid}
-      />
-      <Input
-        id="description"
-        element="textarea"
-        label="Description"
-        validators={[VALIDATOR_MINLENGTH(5)]}
-        errorText="Please enter a valid description (at least 5 characters)."
-        onInput={inputHandler}
-        initialValue={formState.inputs.description.value}
-        initialIsValid={formState.inputs.description.isValid}
-      />
-      <CustomButton type="submit" disabled={!formState.isValid}>UPDATE PLACE</CustomButton>
-    </form>
+    formState.inputs.title.value &&                                              //----> beatiful JSX && use !
+      <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
+        <Input
+          id="title"
+          element="input"
+          type="text"
+          label="Title"
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Please enter a valid title."
+          onInput={inputHandler}
+          initialValue={formState.inputs.title.value}
+          initialIsValid={formState.inputs.title.isValid}
+        />
+        <Input
+          id="description"
+          element="textarea"
+          label="Description"
+          validators={[VALIDATOR_MINLENGTH(5)]}
+          errorText="Please enter a valid description (at least 5 characters)."
+          onInput={inputHandler}
+          initialValue={formState.inputs.description.value}
+          initialIsValid={formState.inputs.description.isValid}
+        />
+        <CustomButton type="submit" disabled={!formState.isValid}>UPDATE PLACE</CustomButton>
+      </form> 
   );
 }
