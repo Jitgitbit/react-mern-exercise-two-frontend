@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import './PlaceForm.css'
@@ -40,6 +40,8 @@ const DUMMY_PLACES = [
 
 export default function UpdatePlace() {
 
+  const [isLoading, setIsLoading] = useState(true)
+
   const placeId = useParams().placeId;
 
   const [formState, inputHandler, setFormData] = useFormHook({
@@ -66,6 +68,7 @@ export default function UpdatePlace() {
         isValid: true
       },
     }, true);
+    setIsLoading(false);
   }, [setFormData, identifiedPlace]);
   
   const placeUpdateSubmitHandler = event => {
@@ -81,7 +84,7 @@ export default function UpdatePlace() {
     );
   }
 
-  if (!formState.inputs.title.value){
+  if (isLoading){
     return (
       <div className="center">
         <h1>Loading...</h1>
