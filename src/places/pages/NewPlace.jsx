@@ -32,7 +32,7 @@ const formReducer = (state, action) => {
 
 
 export default function NewPlace() {
-  useReducer(formReducer, {
+  const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       title: {
         value: '',
@@ -47,8 +47,10 @@ export default function NewPlace() {
   });
 
   // const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
-  const titleInputHandler = useCallback((id, value, isValid) => {}, []);                             //--> no more infinite loop !
-  const descriptionInputHandler = useCallback((id, value, isValid) => {}, []);                             //--> no more infinite loop !
+  const titleInputHandler = useCallback((id, value, isValid) => {          //--> no more infinite loop !
+    dispatch({type: 'INPUT_CHANGE', value: value, isValid: isValid, inputId: id})
+  }, []);                             
+  const descriptionInputHandler = useCallback((id, value, isValid) => {}, []);                             
 
   return (
     <form className="place-form">
