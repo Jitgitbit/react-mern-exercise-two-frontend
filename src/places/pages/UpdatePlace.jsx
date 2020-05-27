@@ -81,32 +81,38 @@ export default function UpdatePlace() {
     );
   }
 
+  if (!formState.inputs.title.value){
+    return (
+      <div className="center">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
   return (
-    formState.inputs.title.value && (                                             //----> beatiful JSX && use !
-      <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
-        <Input
-          id="title"
-          element="input"
-          type="text"
-          label="Title"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a valid title."
-          onInput={inputHandler}
-          initialValue={formState.inputs.title.value}
-          initialIsValid={formState.inputs.title.isValid}
-        />
-        <Input
-          id="description"
-          element="textarea"
-          label="Description"
-          validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Please enter a valid description (at least 5 characters)."
-          onInput={inputHandler}
-          initialValue={formState.inputs.description.value}
-          initialIsValid={formState.inputs.description.isValid}
-        />
-        <CustomButton type="submit" disabled={!formState.isValid}>UPDATE PLACE</CustomButton>
-      </form> 
-    )
+    <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
+      <Input
+        id="title"
+        element="input"
+        type="text"
+        label="Title"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid title."
+        onInput={inputHandler}
+        initialValue={formState.inputs.title.value}
+        initialIsValid={formState.inputs.title.isValid}
+      />
+      <Input
+        id="description"
+        element="textarea"
+        label="Description"
+        validators={[VALIDATOR_MINLENGTH(5)]}
+        errorText="Please enter a valid description (at least 5 characters)."
+        onInput={inputHandler}
+        initialValue={formState.inputs.description.value}
+        initialIsValid={formState.inputs.description.isValid}
+      />
+      <CustomButton type="submit" disabled={!formState.isValid}>UPDATE PLACE</CustomButton>
+    </form>   
   );
 }
