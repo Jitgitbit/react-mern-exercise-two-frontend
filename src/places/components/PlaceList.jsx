@@ -12,7 +12,7 @@ export default function PlaceList(props) {
     return (
       <div className="place-list center">
         <Card>
-          <h2>| No Places found. Maybe create one? |</h2>
+          <h2>No Places found. Maybe create one?</h2>
           <CustomButton to='/places/new'>Share Place</CustomButton>
         </Card>
       </div>

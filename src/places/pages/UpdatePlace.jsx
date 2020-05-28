@@ -7,6 +7,7 @@ import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/util/validators";
 import CustomButton from '../../shared/components/FormElements/CustomButton';
 import { useFormHook } from "../../shared/hooks/form-hook";
+import Card from "../../shared/components/UIElements/Card";
 
 
 const DUMMY_PLACES = [
@@ -81,7 +82,9 @@ export default function UpdatePlace() {
   if (!identifiedPlace) {
     return (
       <div className="center">
-        <h2>Could not find place!</h2>
+        <Card>
+          <h2>Could not find place!</h2>
+        </Card>
       </div>
     );
   }
@@ -89,7 +92,9 @@ export default function UpdatePlace() {
   if (isLoading){
     return (
       <div className="center">
-        <h1>Loading...</h1>
+        <Card>
+          <h1> Loading... </h1>
+        </Card>
       </div>
     );
   }
