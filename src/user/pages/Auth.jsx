@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import './Auth.css'
 
@@ -7,9 +7,12 @@ import Card from '../../shared/components/UIElements/Card';
 import Input from '../../shared/components/FormElements/Input';
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators';
 import CustomButton from '../../shared/components/FormElements/CustomButton';
+import { AuthContext } from '../../shared/context/auth.context';
 
 
 export default function Auth() {
+
+  const auth = useContext(AuthContext);
 
   const [isLoginMode, setIsLoginMode] = useState(true);
 
@@ -27,6 +30,7 @@ export default function Auth() {
   const authSubmitHandler = event => {
     event.preventDefault();
     console.log(`--->> auth inputs say what?`,formState.inputs);
+    auth.login();
   }
   const switchModeHandler = () => {
     if(!isLoginMode){
