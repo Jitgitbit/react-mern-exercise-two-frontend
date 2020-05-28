@@ -4,6 +4,7 @@ import './PlaceList.css'
 
 import PlaceItem from './PlaceItem';
 import Card from '../../shared/components/UIElements/Card';
+import CustomButton from '../../shared/components/FormElements/CustomButton'
 
 
 export default function PlaceList(props) {
@@ -12,7 +13,7 @@ export default function PlaceList(props) {
       <div className="place-list center">
         <Card>
           <h2>| No Places found. Maybe create one? |</h2>
-          <button>Share Place</button>
+          <CustomButton to='/places/new'>Share Place</CustomButton>
         </Card>
       </div>
     );

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './CustomButton.css';
 
-const Button = props => {
+const CustomButton = props => {
   if (props.href) {
     return (
       <a
@@ -40,4 +40,4 @@ const Button = props => {
   );
 };
 
-export default Button;
+export default CustomButton;

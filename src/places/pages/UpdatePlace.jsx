@@ -58,16 +58,18 @@ export default function UpdatePlace() {
   const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);     //--> placed under hook to simulate server delay !!!
 
   useEffect(() => {
-    setFormData({
-      title: {
-        value: identifiedPlace.title,
-        isValid: true
-      },
-      description: {                               
-        value: identifiedPlace.description,
-        isValid: true
-      },
-    }, true);
+    if(identifiedPlace){                                                //---> otherwise you risk bugging with undefined
+      setFormData({
+        title: {
+          value: identifiedPlace.title,
+          isValid: true
+        },
+        description: {                               
+          value: identifiedPlace.description,
+          isValid: true
+        },
+      }, true);
+    }
     setIsLoading(false);
   }, [setFormData, identifiedPlace]);
   
