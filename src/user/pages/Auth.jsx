@@ -13,7 +13,7 @@ export default function Auth() {
 
   const [isLoginMode, setIsLoginMode] = useState(true);
 
-  const [formState, inputHandler] = useFormHook({
+  const [formState, inputHandler, setFormData] = useFormHook({
     email: {
       value: '',
       isValid: false
@@ -29,6 +29,20 @@ export default function Auth() {
     console.log(`--->> auth inputs say what?`,formState.inputs);
   }
   const switchModeHandler = () => {
+    if(!isLoginMode){
+      setFormData({
+        ...formState.inputs,
+        name: undefined
+      }, formState.inputs.email.isValid && formState.inputs.password.isValid);
+    }else{
+      setFormData({
+        ...formState.inputs,
+        name: {
+          value: '',
+          isValid: false
+        }
+      }, false);
+    }
     setIsLoginMode(prevMode => !prevMode);
   }
 
