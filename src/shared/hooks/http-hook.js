@@ -4,7 +4,7 @@ export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
-  const activeHttpRequests = useRef([]);      //---> so this stores data across rerender cycles ! in case the user would look elsewhere while login is loading !
+  const activeHttpRequests = useRef([]);      //---> so this stores data across rerender cycles ! in case the user would look elsewhere while something is loading !
 
   const sendRequest = useCallback(
     async (url, method = 'GET', body = null, headers = {}) => {
