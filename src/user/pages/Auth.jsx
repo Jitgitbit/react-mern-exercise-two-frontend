@@ -6,8 +6,8 @@ import { useFormHook } from '../../shared/hooks/form-hook'
 import Card from '../../shared/components/UIElements/Card';
 import Input from '../../shared/components/FormElements/Input';
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators';
-import CustomButton from '../../shared/components/FormElements/CustomButton';
-import { AuthContext } from '../../shared/context/auth.context';
+import Button from '../../shared/components/FormElements/Button';
+import { AuthContext } from '../../shared/context/auth-context';
 
 
 export default function Auth() {
@@ -84,13 +84,13 @@ export default function Auth() {
           errorText="Please enter a valid password, at least 5 characters."
           onInput={inputHandler}
         />
-        <CustomButton type="submit" disabled={!formState.isValid}>
+        <Button type="submit" disabled={!formState.isValid}>
           {isLoginMode ? 'LOGIN' : 'SIGNUP'}
-        </CustomButton>
+        </Button>
       </form>
-      <CustomButton inverse onClick={switchModeHandler}>
+      <Button inverse onClick={switchModeHandler}>
         SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
-      </CustomButton>
+      </Button>
     </Card>
   )
 }

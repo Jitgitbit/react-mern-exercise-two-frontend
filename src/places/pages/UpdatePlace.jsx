@@ -5,7 +5,7 @@ import './PlaceForm.css'
 
 import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/util/validators";
-import CustomButton from '../../shared/components/FormElements/CustomButton';
+import Button from '../../shared/components/FormElements/Button';
 import { useFormHook } from "../../shared/hooks/form-hook";
 import Card from "../../shared/components/UIElements/Card";
 
@@ -122,7 +122,7 @@ export default function UpdatePlace() {
         initialValue={formState.inputs.description.value}
         initialIsValid={formState.inputs.description.isValid}
       />
-      <CustomButton type="submit" disabled={!formState.isValid}>UPDATE PLACE</CustomButton>
+      <Button type="submit" disabled={!formState.isValid}>UPDATE PLACE</Button>
     </form>   
   );
 }

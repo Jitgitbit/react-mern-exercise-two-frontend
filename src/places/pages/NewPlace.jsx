@@ -3,7 +3,7 @@ import React from 'react';
 import './PlaceForm.css';
 
 import Input from '../../shared/components/FormElements/Input';
-import CustomButton from '../../shared/components/FormElements/CustomButton';
+import Button from '../../shared/components/FormElements/Button';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
@@ -60,9 +60,9 @@ const NewPlace = () => {
         errorText="Please enter a valid address."
         onInput={inputHandler}
       />
-      <CustomButton type="submit" disabled={!formState.isValid}>
+      <Button type="submit" disabled={!formState.isValid}>
         ADD PLACE
-      </CustomButton>
+      </Button>
     </form>
   );
 };

@@ -26,15 +26,12 @@ const Input = props => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue || '',
     isTouched: false,
-    isValid: props.initialIsValid || false
+    isValid: props.initialValid || false
   });
 
   const { id, onInput } = props;
   const { value, isValid } = inputState;
-  
-  // useEffect(()=>{
-  //   props.onInput(props.id, inputState.value, inputState.isValid)
-  // },[props, inputState])                                           //------> DANGER ! INFINITE LOOPS !
+
   useEffect(() => {
     onInput(id, value, isValid)
   }, [id, value, isValid, onInput]);

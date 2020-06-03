@@ -3,10 +3,10 @@ import React, { useState, useContext } from "react";
 import "./PlaceItem.css";
 
 import Card from "../../shared/components/UIElements/Card";
-import CustomButton from "../../shared/components/FormElements/CustomButton";
+import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElements/Modal";
 import Map from "../../shared/components/UIElements/Map";
-import { AuthContext } from "../../shared/context/auth.context";
+import { AuthContext } from "../../shared/context/auth-context";
 
 export default function PlaceItem(props) {
 
@@ -37,7 +37,7 @@ export default function PlaceItem(props) {
         header={props.address}
         contentClass="place-item__modal-content"
         footerClass="place-item__modal-actions"
-        footer={<CustomButton onClick={closeMapHandler}>CLOSE</CustomButton>}
+        footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className="map-container">
           <Map center={props.coordinates} zoom={16} />
@@ -45,8 +45,8 @@ export default function PlaceItem(props) {
       </Modal>
       <Modal onCancel={cancelDeleteHandler} show={showConfirmModal} header="Are you sure?" footerClass="place-item__modal-actions" footer={
         <React.Fragment>
-          <CustomButton inverse onClick={cancelDeleteHandler}>CANCEL</CustomButton>
-          <CustomButton danger onClick={confirmDeleteHandler}>DELETE</CustomButton>
+          <Button inverse onClick={cancelDeleteHandler}>CANCEL</Button>
+          <Button danger onClick={confirmDeleteHandler}>DELETE</Button>
         </React.Fragment>
       }>
         <p>Do you want to proceed and delete this place?</p>
@@ -62,12 +62,12 @@ export default function PlaceItem(props) {
             <p>{props.description}</p>
           </div>
           <div className="place-item__actions">
-            <CustomButton inverse onClick={openMapHandler}>VIEW ON MAP</CustomButton>
+            <Button inverse onClick={openMapHandler}>VIEW ON MAP</Button>
             {auth.isLoggedIn && (
-              <CustomButton to={`/places/${props.id}`}>EDIT</CustomButton>
+              <Button to={`/places/${props.id}`}>EDIT</Button>
             )}
             {auth.isLoggedIn && (
-            <CustomButton danger onClick={showDeleteWarningHandler}>DELETE</CustomButton>
+            <Button danger onClick={showDeleteWarningHandler}>DELETE</Button>
             )}
           </div>
         </Card>

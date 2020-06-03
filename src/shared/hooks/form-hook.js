@@ -1,11 +1,11 @@
-import { useReducer, useCallback } from "react";
+import { useCallback, useReducer } from 'react';
 
 const formReducer = (state, action) => {
   switch (action.type) {
     case 'INPUT_CHANGE':
       let formIsValid = true;
       for (const inputId in state.inputs) {
-        if(!state.inputs[inputId]){
+        if (!state.inputs[inputId]) {
           continue;
         }
         if (inputId === action.inputId) {
@@ -33,28 +33,26 @@ const formReducer = (state, action) => {
 };
 
 export const useFormHook = (initialInputs, initialFormValidity) => {
-
   const [formState, dispatch] = useReducer(formReducer, {
-    inputs: initialInputs  ,
+    inputs: initialInputs,
     isValid: initialFormValidity
   });
 
-  // const titleInputHandler = (id, value, isValid) => {};      //------> DANGER ! INFINITE LOOP !
-  const inputHandler = useCallback((id, value, isValid) => {         //--> no more infinite loop !
+  const inputHandler = useCallback((id, value, isValid) => {
     dispatch({
       type: 'INPUT_CHANGE',
       value: value,
       isValid: isValid,
       inputId: id
     });
-  }, [dispatch]);                                 //--> here dispatch can actually be ommitted thx to react, I leave it for clarity.
+  }, []);
 
   const setFormData = useCallback((inputData, formValidity) => {
     dispatch({
       type: 'SET_DATA',
       inputs: inputData,
       formIsValid: formValidity
-    })
+    });
   }, []);
 
   return [formState, inputHandler, setFormData];

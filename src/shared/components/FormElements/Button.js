@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './CustomButton.css';
+import './Button.css';
 
-const CustomButton = props => {
+const Button = props => {
   if (props.href) {
     return (
       <a
@@ -40,4 +40,4 @@ const CustomButton = props => {
   );
 };
 
-export default CustomButton;
+export default Button;
