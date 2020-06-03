@@ -61,7 +61,7 @@ const Auth = () => {
     } else {
       try {
         const response = await fetch(
-          "https://localhost:5000/api/users/signup",
+          "http://localhost:5000/api/users/signup",
           {
             method: "POST",
             headers: {
