@@ -48,7 +48,7 @@ export const useHttpClient = () => {
   useEffect(() => {
     return () => {                                                  //--------> here useEffect is used to cleanUp on unMount !
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      activeHttpRequests.current.forEach(abortCtrl => abortCtrl.abort());     //---> aborting the abort ! lol !
+      activeHttpRequests.current.forEach(abortCtrl => abortCtrl.abort());     //---> aborting the abortController ! lol !
     };
   }, []);
 
