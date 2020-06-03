@@ -49,7 +49,7 @@ const NewPlace = () => {
           address: formState.inputs.address.value,
           creator: auth.userId
         }),
-        { 'Content-Type': 'application/json' }
+        { 'Content-Type': 'application/json' }                           //-----> don't forget the headers, otherwise the DB won't recognize the data !
       );
       history.push('/');
     } catch (err) {}
