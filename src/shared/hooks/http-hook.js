@@ -23,7 +23,7 @@ export const useHttpClient = () => {
         const responseData = await response.json();
 
         activeHttpRequests.current = activeHttpRequests.current.filter(
-          reqCtrl => reqCtrl !== httpAbortCtrl
+          reqCtrl => reqCtrl !== httpAbortCtrl                            //----> only to remove that one controller that was used for that one request !
         );
 
         if (!response.ok) {
