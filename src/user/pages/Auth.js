@@ -8,7 +8,7 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE
 } from '../../shared/util/validators';
-import { useForm } from '../../shared/hooks/form-hook';
+import { useFormHook } from '../../shared/hooks/form-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 import './Auth.css';
 
@@ -16,7 +16,7 @@ const Auth = () => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
 
-  const [formState, inputHandler, setFormData] = useForm(
+  const [formState, inputHandler, setFormData] = useFormHook(
     {
       email: {
         value: '',

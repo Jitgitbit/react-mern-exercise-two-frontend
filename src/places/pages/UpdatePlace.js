@@ -8,7 +8,7 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
-import { useForm } from '../../shared/hooks/form-hook';
+import { useFormHook } from '../../shared/hooks/form-hook';
 import './PlaceForm.css';
 
 const DUMMY_PLACES = [
@@ -44,7 +44,7 @@ const UpdatePlace = () => {
   const [isLoading, setIsLoading] = useState(true);
   const placeId = useParams().placeId;
 
-  const [formState, inputHandler, setFormData] = useForm(
+  const [formState, inputHandler, setFormData] = useFormHook(
     {
       title: {
         value: '',
