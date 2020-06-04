@@ -41,7 +41,7 @@ const App = () => {
   useEffect(() => {                  //---> remember useEffect always runs after the rendering cycle !!!
     const storedData = JSON.parse(localStorage.getItem('userData'));
     if(storedData && storedData.token && new Date(storedData.expiration) > new Date()){
-      login(storedData.userId, storedData.token, new Date(storedData.expiration));
+      login(storedData.userId, storedData.token, new Date(storedData.expiration));              // Crucial for AutoLogin !!
     }
   }, [login]);
 
