@@ -66,8 +66,7 @@ const Auth = () => {
 
   const authSubmitHandler = async event => {
     event.preventDefault();
-
-    console.log(`formState.inputs says what?:`,formState.inputs);        //---> check this out !
+    // console.log(`formState.inputs says what?:`,formState.inputs);                                  //---> check this out !
 
     if (isLoginMode) {
       try {
