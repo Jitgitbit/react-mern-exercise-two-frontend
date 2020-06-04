@@ -82,22 +82,22 @@ const Auth = () => {
             'Content-Type': 'application/json'
           }
         );
-        auth.login(responseData.user.id);
+        auth.login(responseData.userId, responseData.token);
       } catch (err) {}
     } else {
       try {
-        const formData = new FormData();                                //----> FormData can handle all types of data, so far we only handled JSON data,
-        formData.append('email', formState.inputs.email.value);        //----> now with FormData we can handle binary data as well, images are just like 
-        formData.append('name', formState.inputs.name.value);         //----> files, i.e. binary data !
+        const formData = new FormData();                                      //----> FormData can handle all types of data, so far we only handled JSON data,
+        formData.append('email', formState.inputs.email.value);              //----> now with FormData we can handle binary data as well, images are just like 
+        formData.append('name', formState.inputs.name.value);               //----> files, i.e. binary data !
         formData.append('password', formState.inputs.password.value);
         formData.append('image', formState.inputs.image.value);
         const responseData = await sendRequest(
           'http://localhost:5000/api/users/signup',
           'POST',
-          formData                                    //====>> thx to formData we no longer need to add headers, it does it for us !
+          formData                                                     //====>> thx to formData we no longer need to add headers, it does it for us !
         );
 
-        auth.login(responseData.user.id);
+        auth.login(responseData.userId, responseData.token);
       } catch (err) {}
     }
   };
@@ -122,7 +122,12 @@ const Auth = () => {
             />
           )}
           {!isLoginMode && (
-            <ImageUpload center id="image" onInput={inputHandler} />   //+++++> this is perfect, the inputHandler takes exactly the args that ImageUpload needs !
+            <ImageUpload
+              center
+              id="image"
+              onInput={inputHandler}                              //+++++> this is perfect, the inputHandler takes exactly the args that ImageUpload needs !
+              errorText="Please provide an image."  
+            />
           )}
           <Input
             element="input"
