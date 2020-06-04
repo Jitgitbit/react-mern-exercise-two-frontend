@@ -122,7 +122,12 @@ const Auth = () => {
             />
           )}
           {!isLoginMode && (
-            <ImageUpload center id="image" onInput={inputHandler} />   //+++++> this is perfect, the inputHandler takes exactly the args that ImageUpload needs !
+            <ImageUpload 
+              center 
+              id="image" 
+              onInput={inputHandler}                      //+++++> this is perfect, the inputHandler takes exactly the args that ImageUpload needs !
+              errorText="Please provide an image."
+            />   
           )}
           <Input
             element="input"
