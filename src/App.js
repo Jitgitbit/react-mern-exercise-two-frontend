@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -28,6 +28,13 @@ const App = () => {
     setToken(null);
     setUserId(null);
   }, []);
+
+  useEffect(() => {                  //---> remember useEffect always runs after the rendering cycle !!!
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+    if(storedData && storedData.token){
+      login(storedData.userId, storedData.token);
+    }
+  }, [login]);
 
   let routes;
 
