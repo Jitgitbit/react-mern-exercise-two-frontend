@@ -9,3 +9,13 @@ google maps JS sdk
 REACT_APP_           ---> always start with that
 
 npm run build
+
+npm install -g serve
+cd build 
+serve
+
+firebase login
+firebase init
+
+npm run build
+firebase deploy
