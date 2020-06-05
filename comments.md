@@ -7,3 +7,5 @@ npm install --save react-transition-group
 google maps JS sdk
 
 REACT_APP_           ---> always start with that
+
+npm run build
