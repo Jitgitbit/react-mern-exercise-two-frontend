@@ -19,3 +19,5 @@ firebase init
 
 npm run build
 firebase deploy
+
+https://phoenixplaces.web.app
